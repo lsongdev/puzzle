@@ -1,65 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <title>Lsong’s Pages</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="homepage, blog, music and etc.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17191f">
+  <meta name="description" content="一个类似 Mastermind 的在线颜色密码破解游戏">
   <meta name="author" content="Lsong">
-  <meta name="theme-color" content="#ffffff">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Lsong’s Web">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:creator" content="@lsongdev">
+  <meta name="apple-mobile-web-app-title" content="密码破解">
+  <title>密码破解 · Color Code</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="https://lsong.org/icon.svg">
-  <link rel="apple-touch-icon" sizes="128x128" type="image/png" href="https://lsong.org/icon-x128.png">
-  <link rel="apple-touch-icon" sizes="512x512" type="image/png" href="https://lsong.org/icon-x512.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="https://lsong.org/icon-x128.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="https://lsong.org/icon-x512.png">
   <link rel="stylesheet" href="index.css">
   <script type="module" src="index.js"></script>
 </head>
-
 <body>
-  <header class="navbar">
-    <a href="/" class="navbar-brand">
-      <img src="https://lsong.org/assets/web/icon.png?v=2" alt="logo" class="navbar-brand-mark"
-        referrerpolicy="no-referrer" />
-      <h1 prefix="Lsong’s " class="title">Pages</h1>
+  <header class="navbar site-header">
+    <a href="https://lsong.org" class="navbar-brand" aria-label="Lsong’s Home">
+      <img src="https://lsong.org/assets/web/icon.png?v=2" alt="" class="navbar-brand-mark" aria-hidden="true" referrerpolicy="no-referrer">
+      <span class="title" prefix="Lsong’s ">Games</span>
     </a>
-    <nav class="nav nav-bar">
-      <a href="//lsong.org">Home</a>
-      <a href="//lsong.org/posts">Blog</a>
-      <a href="//lsong.org/games">Games</a>
-      <a href="//lsong.org/music">Music</a>
-      <a href="//lsong.org/start">Apps</a>
+    <nav class="nav nav-bar" aria-label="Main navigation">
+      <a href="https://lsong.org">Home</a>
+      <a href="https://lsong.org/posts">Blog</a>
+      <a class="active" href="https://lsong.org/games">Games</a>
+      <a href="https://lsong.org/music">Music</a>
+      <a href="https://lsong.org/start">Apps</a>
     </nav>
   </header>
-  <main class="content">
 
-    <section id="hello" class="site-hero">
-      <h2 class="site-hero-title">Hello 👋</h2>
-      <p class="site-hero-copy">
-        Hi, I’m Liu Song — a full-stack developer making thoughtful software for the web, mobile devices, and the
-        systems in between.
-      </p>
-    </section>
-
-    <section id="app"></section>
+  <main class="content puzzle-content">
+    <section id="app" aria-label="密码破解游戏"></section>
+    <noscript>这个游戏需要启用 JavaScript。</noscript>
 
     <section id="subscribe" class="subscribe">
       <h2>Subscribe</h2>
       <p>Join our occasional newsletter for product launches, availability, job openings, and news:</p>
       <form action="https://formspree.io/hi@lsong.org" method="post" class="input-group width-full">
-        <input class="input" type="email" id="email" name="email" required placeholder="email address">
+        <input class="input input-block" type="email" id="email" name="email" required placeholder="email address">
         <button class="button" type="submit">Submit</button>
       </form>
     </section>
   </main>
+
   <footer class="site-footer footer">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="https://lsong.org">
       <img class="navbar-brand-mark" src="https://lsong.org/assets/web/icon.png" alt="" aria-hidden="true">
       <span>lsong.org</span>
     </a>
@@ -71,5 +59,4 @@
     </nav>
   </footer>
 </body>
-
 </html>

@@ -1,30 +1,9 @@
 {
-  "name": "Lsong’s Web",
-  "short_name": "Lsong’s Web",
-  "description": "homepage, blog, music and etc.",
-  "id": "?id=page",
+  "name": "密码破解 · Color Code",
+  "short_name": "密码破解",
+  "description": "类似 Mastermind 的颜色密码破解游戏",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000",
-  "background_color": "#efefef",
-  "icons": [
-    {
-      "src": "https://lsong.org/icon-x128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "https://lsong.org/icon-x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "categories": [
-    "web",
-    "music",
-    "books",
-    "education"
-  ]
+  "theme_color": "#17191f",
+  "background_color": "#f3f0e9"
 }
