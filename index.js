@@ -1,4 +1,31 @@
-import { COLORS, evaluate, randomSecret, validateCode } from './game-logic.js';
+export const COLORS = ['red', 'yellow', 'green', 'blue', 'purple', 'orange'];
+
+export function validateCode(code) {
+  return Array.isArray(code) && code.length === 4 && new Set(code).size === 4 && code.every(color => COLORS.includes(color));
+}
+
+export function evaluate(secret, guess, mode = 'line') {
+  if (!validateCode(secret) || !validateCode(guess)) {
+    throw new TypeError('密码和猜测必须是由 4 种不重复有效颜色组成的数组');
+  }
+  const line = guess.map((color, index) => color === secret[index] ? 'green' : secret.includes(color) ? 'white' : 'black');
+  if (mode === 'line') return line;
+  if (mode === 'dots') {
+    const green = line.filter(result => result === 'green').length;
+    const white = line.filter(result => result === 'white').length;
+    return { green, white, black: 4 - green - white };
+  }
+  throw new TypeError('mode 必须是 line 或 dots');
+}
+
+export function randomSecret(random = Math.random) {
+  const pool = [...COLORS];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, 4);
+}
 
 const STORAGE_KEY = 'color-code-progress-v2';
 const COLOR_META = {
@@ -41,7 +68,7 @@ function feedbackView(result, mode) {
   wrap.setAttribute('aria-label', `位置正确 ${result.green}，颜色正确位置错误 ${result.white}，不存在 ${result.black}`); return wrap;
 }
 function historyRow(guess, mode, label) {
-  const row = el('li', 'history-row'); row.append(el('span', 'row-label', label));
+  const row = el('li', `history-row history-row--${mode}`); row.append(el('span', 'row-label', label));
   const pegs = el('div', 'guess-pegs'); guess.forEach(color => pegs.append(colorPeg(color, { small: true })));
   const feedback = feedbackView(evaluate(ensureGame().secret, guess, mode), mode);
   if (mode === 'line') {
@@ -113,7 +140,7 @@ function renderPicker(panel) {
 function renderActions(panel, game) {
   const actions = el('div', 'actions');
   if (game.status === 'playing') {
-    const submit = el('button', 'primary-button', state.selected.length === 4 ? '提交验证 →' : `还需选择 ${4 - state.selected.length} 种颜色`);
+    const submit = el('button', 'button button-primary', state.selected.length === 4 ? '提交验证 →' : `还需选择 ${4 - state.selected.length} 种颜色`);
     submit.type = 'button'; submit.disabled = state.selected.length !== 4;
     submit.onclick = () => {
       if (!validateCode(state.selected)) return; game.guesses.push([...state.selected]); state.selected = [];
@@ -121,7 +148,7 @@ function renderActions(panel, game) {
       if (latest.green === 4) game.status = 'won'; else if (game.guesses.length >= game.maxAttempts) game.status = 'lost'; save(); render();
     }; actions.append(submit);
   }
-  const reset = el('button', 'secondary-button', '重新挑战');
+  const reset = el('button', 'button button-secondary', '重新挑战');
   reset.type = 'button'; reset.onclick = restart; actions.append(reset);
   panel.append(actions);
 }
