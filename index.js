@@ -52,7 +52,11 @@ function feedbackView(result, mode) {
 function historyRow(guess, mode, label) {
   const row = el('li', 'history-row'); row.append(el('span', 'row-label', label));
   const pegs = el('div', 'guess-pegs'); guess.forEach(color => pegs.append(colorPeg(color, { small: true })));
-  row.append(pegs, feedbackView(evaluate(ensureGame().secret, guess, mode), mode)); return row;
+  const feedback = feedbackView(evaluate(ensureGame().secret, guess, mode), mode);
+  if (mode === 'line') {
+    const alignedGuess = el('div', 'aligned-guess'); alignedGuess.append(pegs, feedback); row.append(alignedGuess);
+  } else row.append(pegs, feedback);
+  return row;
 }
 
 function render() {
