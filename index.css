@@ -11,6 +11,14 @@
   --panel: #fff;
 }
 
+#app button,
+#app .peg {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .page-shell {
   margin: 0 auto;
   padding: 44px 0 52px;
