@@ -169,4 +169,4 @@ function restart() {
   state.selected = []; state.game = freshGame(); save(); render();
 }
 
-render();
+if (typeof document !== 'undefined') render();

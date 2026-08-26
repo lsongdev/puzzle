@@ -338,13 +338,14 @@ button.peg {
   min-height: 78px;
   display: flex;
   justify-content: center;
-  gap: 17px;
+  gap: clamp(8px, 4vw, 17px);
   align-items: center;
+  padding-inline: 12px;
 }
 
 .slot {
-  width: 56px;
-  height: 56px;
+  width: clamp(46px, 14vw, 56px);
+  height: clamp(46px, 14vw, 56px);
   display: grid;
   place-items: center;
   border: 2px dashed #c8c2b7;
@@ -355,29 +356,33 @@ button.peg {
 }
 
 .slots .peg {
-  width: 56px;
-  height: 56px;
+  width: clamp(46px, 14vw, 56px);
+  height: clamp(46px, 14vw, 56px);
 }
 
 .palette {
-  width: min(480px, calc(100% - 24px));
+  width: min(100%, 480px);
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 9px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(2px, 1.5vw, 9px);
+  padding-inline: clamp(6px, 2.5vw, 12px);
   margin: 22px auto 28px;
 }
 
 .palette-item {
   display: grid;
   justify-items: center;
+  min-width: 0;
   gap: 7px;
   color: #6f6c65;
   font-size: 11px;
 }
 
 .palette .peg {
-  width: 48px;
-  height: 48px;
+  width: clamp(32px, 10vw, 48px);
+  height: clamp(32px, 10vw, 48px);
+  max-width: 100%;
+  padding: 0;
 }
 
 .peg:disabled {
